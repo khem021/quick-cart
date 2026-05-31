@@ -1,0 +1,6 @@
+body{min-height:100vh}
+.product-card img{object-fit:cover;height:220px}
+.stat-card{border:none;border-radius:1rem}
+.table thead th{white-space:nowrap}
+.report-filter .form-control,.report-filter .form-select{min-height:46px}
+.hero-banner{border-radius:1.25rem;background:linear-gradient(135deg,#212529,#495057);color:#fff}

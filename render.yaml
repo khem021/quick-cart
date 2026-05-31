@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: quick-cart
+    env: docker
+    plan: free
+    healthCheckPath: /pages/home.php
+    envVars:
+      - key: BASE_URL
+        value: ""
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: DB_NAME
+        value: quick_cart

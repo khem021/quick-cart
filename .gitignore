@@ -1,0 +1,12 @@
+# Uploaded product images (ephemeral on Render)
+assets/products/*.jpg
+assets/products/*.jpeg
+assets/products/*.png
+assets/products/*.webp
+assets/products/*.gif
+
+# Environment / editor
+.env
+.vscode/
+.idea/
+*.log
