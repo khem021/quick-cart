@@ -10,6 +10,9 @@ RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf 
 # Copy application files
 COPY . /var/www/html/
 
+# Apply custom PHP config
+RUN cp /var/www/html/php.ini /usr/local/etc/php/php.ini
+
 # Create upload directories and set permissions
 RUN mkdir -p /var/www/html/assets/products \
     && mkdir -p /var/www/html/assets/ids \

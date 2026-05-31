@@ -49,9 +49,11 @@ function nav_active(array $parts): string {
 }
 function format_currency(float $a): string { return 'PHP ' . number_format($a, 2); }
 function save_uploaded_image(array $file, string $folder): ?string {
-    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) return null;
-    if (($file['error'] ?? UPLOAD_ERR_OK) !== UPLOAD_ERR_OK) throw new RuntimeException('Upload failed.');
-    if (($file['size'] ?? 0) > 2 * 1024 * 1024) throw new RuntimeException('File must be 2MB or less.');
+    $err = $file['error'] ?? UPLOAD_ERR_NO_FILE;
+    if ($err === UPLOAD_ERR_NO_FILE) return null;
+    if ($err === UPLOAD_ERR_INI_SIZE || $err === UPLOAD_ERR_FORM_SIZE) throw new RuntimeException('File too large. Maximum allowed is 10MB.');
+    if ($err !== UPLOAD_ERR_OK) throw new RuntimeException('Upload error (code ' . $err . '). Please try again.');
+    if (($file['size'] ?? 0) > 10 * 1024 * 1024) throw new RuntimeException('File must be 10MB or less.');
     $allowed = ['image/jpeg'=>'jpg','image/png'=>'png','image/webp'=>'webp','image/svg+xml'=>'svg'];
     $mime = (new \finfo(FILEINFO_MIME_TYPE))->file($file['tmp_name']);
     if (!isset($allowed[$mime])) throw new RuntimeException('Only JPG, PNG, WEBP, or SVG files are allowed.');
