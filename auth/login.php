@@ -81,10 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="<?= e(url('auth/register.php')) ?>" class="fw-bold">Create account</a>
             </div>
 
-            <div class="mt-4 p-3 rounded-4" style="background:#f8fbff;border:1px solid #e8edf5;">
-                <div class="fw-semibold mb-1">Default admin</div>
-                <div class="small text-muted">admin@quickcart.test / admin12345</div>
-            </div>
         </div>
     </div>
 </div>
