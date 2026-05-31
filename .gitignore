@@ -1,3 +1,6 @@
+# Uploaded user ID images (sensitive personal data — never commit)
+assets/ids/
+
 # Uploaded product images (ephemeral on Render)
 assets/products/*.jpg
 assets/products/*.jpeg
